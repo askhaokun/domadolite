@@ -18,17 +18,31 @@ class HistoryViewController: UIViewController {
     @IBOutlet weak var HistoryText: UITextView!
     
     @IBAction func datePicker(sender: AnyObject) {
+        let pickedDate = sender.date
+        fetchData(pickedDate!!)
+            }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fetchData(NSDate())
+        // Do any additional setup after loading the view.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func fetchData(pickedDate: NSDate) {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let pickedDate = sender.date
-        
         var context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
         var f = NSFetchRequest (entityName: "Missionjournal")
         var dataArr = context!.executeFetchRequest(f, error: nil)!
         
         var outputText = ""
         println(dataArr.count)
-    
+        
         var index = 0
         for index = 0; index < dataArr.count; index++ {
             var dateout: String = dataArr[index].valueForKey("date") as String
@@ -37,10 +51,10 @@ class HistoryViewController: UIViewController {
             var durationout: Int = dataArr[index].valueForKey("duration") as Int
             var completed: Bool = dataArr[index].valueForKey("complete") as Bool
             println("\(dateout)")
-    ////            println("\(index)")
-    ////            println("\(dateFormatter.stringFromDate(pickedDate!!))")
-            if (dateFormatter.stringFromDate(pickedDate!!)) == dateout {
-    //////                //outputText += dateFormatter.stringFromDate(pickedDate!!)
+            ////            println("\(index)")
+            ////            println("\(dateFormatter.stringFromDate(pickedDate!!))")
+            if (dateFormatter.stringFromDate(pickedDate)) == dateout {
+                //////                //outputText += dateFormatter.stringFromDate(pickedDate!!)
                 outputText += dateout
                 outputText += " at " + timeout
                 outputText += ": "
@@ -56,23 +70,8 @@ class HistoryViewController: UIViewController {
             }
         }
         HistoryText.text = outputText
-    }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //    func fetchData() {
-    //
-    //
-    //    }
     /*
     // MARK: - Navigation
     
