@@ -7,45 +7,80 @@
 //
 
 import UIKit
-import Foundation
 import CoreData
 
 class HistoryViewController: UIViewController {
-
-   
+    
+    
+    
+    //  var dataArr:Array<AnyObject> = []
+    
     @IBOutlet weak var HistoryText: UITextView!
     
     @IBAction func datePicker(sender: AnyObject) {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let pickedDate = sender.date
-        HistoryText.text = dateFormatter.stringFromDate(pickedDate!!)
-
+        
+        var context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+        var f = NSFetchRequest (entityName: "Missionjournal")
+        var dataArr = context!.executeFetchRequest(f, error: nil)!
+        
+        var outputText = ""
+        println(dataArr.count)
+    
+        var index = 0
+        for index = 0; index < dataArr.count; index++ {
+            var dateout: String = dataArr[index].valueForKey("date") as String
+            var timeout: String = dataArr[index].valueForKey("time") as String
+            var missionout: String = dataArr[index].valueForKey("mission") as String
+            var durationout: Int = dataArr[index].valueForKey("duration") as Int
+            var completed: Bool = dataArr[index].valueForKey("complete") as Bool
+            println("\(dateout)")
+    ////            println("\(index)")
+    ////            println("\(dateFormatter.stringFromDate(pickedDate!!))")
+            if (dateFormatter.stringFromDate(pickedDate!!)) == dateout {
+    //////                //outputText += dateFormatter.stringFromDate(pickedDate!!)
+                outputText += dateout
+                outputText += " at " + timeout
+                outputText += ": "
+                outputText += missionout
+                outputText += " for \(durationout)"
+                outputText += " secs \n"
+                if completed{
+                    outputText += "Mission Complete\n"
+                }
+                else{
+                    outputText += "Mission Failed\n"
+                }
+            }
+        }
+        HistoryText.text = outputText
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func fetchData(){
-        var context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
-        var f = NSFetchRequest (entityName: "Missionjournal")
-        context?.executeFetchRequest(f, error: nil)
-    }
+    //    func fetchData() {
+    //
+    //
+    //    }
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
