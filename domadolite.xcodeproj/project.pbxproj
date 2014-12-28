@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00090B9A1A4DBD8A00C511CF /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00090B991A4DBD8A00C511CF /* HistoryViewController.swift */; };
 		0078F4621A4734CB0008DD67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0078F4611A4734CB0008DD67 /* AppDelegate.swift */; };
 		0078F4651A4734CB0008DD67 /* domadolite.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0078F4631A4734CB0008DD67 /* domadolite.xcdatamodeld */; };
 		0078F4671A4734CB0008DD67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0078F4661A4734CB0008DD67 /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00090B991A4DBD8A00C511CF /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		0078F45C1A4734CB0008DD67 /* domadolite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = domadolite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0078F4601A4734CB0008DD67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0078F4611A4734CB0008DD67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				0078F4611A4734CB0008DD67 /* AppDelegate.swift */,
 				0078F4661A4734CB0008DD67 /* ViewController.swift */,
 				0078F4681A4734CB0008DD67 /* Main.storyboard */,
+				00090B991A4DBD8A00C511CF /* HistoryViewController.swift */,
 				0078F46B1A4734CB0008DD67 /* Images.xcassets */,
 				0078F46D1A4734CB0008DD67 /* LaunchScreen.xib */,
 				0078F4631A4734CB0008DD67 /* domadolite.xcdatamodeld */,
@@ -218,6 +221,7 @@
 				0078F4671A4734CB0008DD67 /* ViewController.swift in Sources */,
 				0078F4621A4734CB0008DD67 /* AppDelegate.swift in Sources */,
 				0078F4651A4734CB0008DD67 /* domadolite.xcdatamodeld in Sources */,
+				00090B9A1A4DBD8A00C511CF /* HistoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +413,7 @@
 				0078F4801A4734CB0008DD67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0078F4811A4734CB0008DD67 /* Build configuration list for PBXNativeTarget "domadoliteTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +422,7 @@
 				0078F4831A4734CB0008DD67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

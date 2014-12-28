@@ -17,14 +17,21 @@ class ViewController: UIViewController {
     
     @IBAction func btn25Min(sender: AnyObject) {
         remainingSeconds = 25*60
+        durationSeconds = remainingSeconds
         isCounting = true
     }
     
     @IBAction func btn3Sec(sender: AnyObject) {
         remainingSeconds = 3
+        durationSeconds = remainingSeconds
         isCounting = true
     }
     
+    @IBAction func btnAbortMission(sender: AnyObject) {
+        isCounting = false
+        recordHistory(txtMission.text!, duration: (durationSeconds - remainingSeconds), complete: false)
+        alert("任务取消")
+    }
     var remainingSeconds: Int = 0 {
         willSet(newSeconds) {
             
@@ -38,6 +45,8 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    var durationSeconds: Int = 0
     
     var timer: NSTimer?
     var isCounting: Bool = false {
@@ -67,13 +76,13 @@ class ViewController: UIViewController {
     func updateTimer(sender: NSTimer) {
         remainingSeconds -= 1
         if remainingSeconds <= 0 {
-            alert()
-            recordHistory(txtMission.text!)
+           alert("计时完成")
+            recordHistory(txtMission.text! , duration: durationSeconds, complete: true)
         }
     }
     
-    func recordHistory(mission:String){
-//Record in file
+    func recordHistory(mission:String, duration:Int, complete:Bool){
+////////Record in file
 //        var sp = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true)
 //        if sp.count > 0{
 //            var url = NSURL(fileURLWithPath: "\(sp[0])/data.txt")!
@@ -87,8 +96,9 @@ class ViewController: UIViewController {
 //            println("end")
 //        }
 
-//Record in sqlite
+///////Record in sqlite
         let date = NSDate()
+        let startTime = date.dateByAddingTimeInterval(-Double(duration))
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let timeFormatter = NSDateFormatter()
@@ -100,16 +110,17 @@ class ViewController: UIViewController {
         var context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
         var row:AnyObject = NSEntityDescription.insertNewObjectForEntityForName("Missionjournal", inManagedObjectContext: context!)
         row.setValue("\(mission)", forKey:"mission")
-        row.setValue(14, forKey:"duration")
-        row.setValue(dateFormatter.stringFromDate(date), forKey:"date")
-        row.setValue(timeFormatter.stringFromDate(date), forKey:"time")
+        row.setValue(duration, forKey:"duration")
+        row.setValue(dateFormatter.stringFromDate(startTime), forKey:"date")
+        row.setValue(timeFormatter.stringFromDate(startTime), forKey:"time")
+        row.setValue(complete, forKey:"complete")
         context!.save(nil)
         println("come on!")
     }
     
-    func alert(){
+    func alert(content:String){
         let msgAlert = UIAlertView()
-        msgAlert.title = "计时完成！"
+        msgAlert.title = "\(content)"
         msgAlert.message = ""
         msgAlert.addButtonWithTitle("OK")
         msgAlert.show()
