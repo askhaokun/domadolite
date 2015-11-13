@@ -17,6 +17,7 @@ class HistoryViewController: UIViewController {
     
     @IBOutlet weak var HistoryText: UITextView!
     
+    
     @IBAction func datePicker(sender: AnyObject) {
         let pickedDate = sender.date
         fetchData(pickedDate!!)
@@ -36,36 +37,42 @@ class HistoryViewController: UIViewController {
     func fetchData(pickedDate: NSDate) {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        var context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
-        var f = NSFetchRequest (entityName: "Missionjournal")
-        var dataArr = context!.executeFetchRequest(f, error: nil)!
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        let f = NSFetchRequest (entityName: "Missionjournal")
+        var dataArr = try! context!.executeFetchRequest(f)
         
         var outputText = ""
-        println(dataArr.count)
+        print(dataArr.count)
         
         var index = 0
         for index = 0; index < dataArr.count; index++ {
-            var dateout: String = dataArr[index].valueForKey("date") as String
-            var timeout: String = dataArr[index].valueForKey("time") as String
-            var missionout: String = dataArr[index].valueForKey("mission") as String
-            var durationout: Int = dataArr[index].valueForKey("duration") as Int
-            var completed: Bool = dataArr[index].valueForKey("complete") as Bool
-            println("\(dateout)")
+            let dateout: String = dataArr[index].valueForKey("date") as! String
+            let timeout: String = dataArr[index].valueForKey("time") as! String
+            let missionout: String = dataArr[index].valueForKey("mission") as! String
+            let durationout: Int = dataArr[index].valueForKey("duration") as! Int
+            let completed: Bool = dataArr[index].valueForKey("complete") as! Bool
+            print("\(dateout)")
             ////            println("\(index)")
             ////            println("\(dateFormatter.stringFromDate(pickedDate!!))")
             if (dateFormatter.stringFromDate(pickedDate)) == dateout {
                 //////                //outputText += dateFormatter.stringFromDate(pickedDate!!)
-                outputText += dateout
-                outputText += " at " + timeout
-                outputText += ": "
+                //outputText += dateout
+                outputText += " At " + timeout
+                outputText += " doing: "
                 outputText += missionout
-                outputText += " for \(durationout)"
-                outputText += " secs \n"
-                if completed{
-                    outputText += "Mission Complete\n"
+                if durationout<60{
+                    outputText += " for less than 1"
                 }
                 else{
-                    outputText += "Mission Failed\n"
+                    outputText += " for \(durationout/60)"
+
+                }
+                    outputText += " minutes \n"
+                if completed{
+                    outputText += "Mission Complete\n\n"
+                }
+                else{
+                    outputText += "Mission Failed\n\n"
                 }
             }
         }

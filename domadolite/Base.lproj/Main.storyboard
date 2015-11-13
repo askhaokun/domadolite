@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2A-cl-DTk">
-                                <rect key="frame" x="76" y="260" width="131" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2A-cl-DTk">
+                                <rect key="frame" x="20" y="256" width="131" height="30"/>
                                 <state key="normal" title="25 Min Countdown">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -25,22 +26,16 @@
                                     <action selector="btn25Min:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="AYZ-74-nKV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1BK-C3-ucc">
-                                <rect key="frame" x="76" y="333" width="123" height="30"/>
-                                <state key="normal" title="3 Sec Countdown">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btn3Sec:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Sb3-oh-fOF"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Mission here 1" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u2H-GE-kJM">
-                                <rect key="frame" x="76" y="184" width="115" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Input Mission Here" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u2H-GE-kJM">
+                                <rect key="frame" x="20" y="50" width="564" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="txtMissionAssign:" destination="vXZ-lx-hvc" eventType="editingDidBegin" id="Rtc-7k-Rhg"/>
+                                </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1aj-Ry-42I">
-                                <rect key="frame" x="76" y="403" width="95" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1aj-Ry-42I">
+                                <rect key="frame" x="20" y="396" width="95" height="30"/>
                                 <state key="normal" title="Abort Mission">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -48,8 +43,8 @@
                                     <action selector="btnAbortMission:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="PTw-wW-P02"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmy-0D-7fD">
-                                <rect key="frame" x="76" y="456" width="49" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmy-0D-7fD">
+                                <rect key="frame" x="20" y="446" width="49" height="30"/>
                                 <state key="normal" title="History">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -57,17 +52,57 @@
                                     <segue destination="FW8-86-Tba" kind="show" id="7pb-sx-4tG"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qas-9y-RKQ">
-                                <rect key="frame" x="218" y="67" width="165" height="72"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qas-9y-RKQ">
+                                <rect key="frame" x="20" y="118" width="564" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tD6-HZ-vEb">
+                                <rect key="frame" x="20" y="331" width="49" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1BK-C3-ucc">
+                                <rect key="frame" x="77" y="331" width="109" height="30"/>
+                                <state key="normal" title="Min Countdown">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btn3Sec:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Sb3-oh-fOF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="1aj-Ry-42I" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="1ac-wC-Bar"/>
+                            <constraint firstItem="A2A-cl-DTk" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="3ov-kH-qMs"/>
+                            <constraint firstItem="A2A-cl-DTk" firstAttribute="top" secondItem="Qas-9y-RKQ" secondAttribute="bottom" constant="66" id="5ia-Dz-tLj"/>
+                            <constraint firstItem="Qas-9y-RKQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="5wl-Aj-It1"/>
+                            <constraint firstItem="1aj-Ry-42I" firstAttribute="top" secondItem="1BK-C3-ucc" secondAttribute="bottom" constant="35" id="6YQ-r7-872"/>
+                            <constraint firstAttribute="trailing" secondItem="Qas-9y-RKQ" secondAttribute="trailing" constant="20" id="FMO-Aq-1hz"/>
+                            <constraint firstItem="u2H-GE-kJM" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="50" id="G4J-rG-9cN"/>
+                            <constraint firstItem="1BK-C3-ucc" firstAttribute="leading" secondItem="tD6-HZ-vEb" secondAttribute="trailing" constant="8" id="RnQ-ea-EZh"/>
+                            <constraint firstAttribute="trailing" secondItem="u2H-GE-kJM" secondAttribute="trailing" constant="20" id="S6O-ep-XBX"/>
+                            <constraint firstItem="tD6-HZ-vEb" firstAttribute="top" secondItem="A2A-cl-DTk" secondAttribute="bottom" constant="45" id="Tst-5s-uLd"/>
+                            <constraint firstItem="dmy-0D-7fD" firstAttribute="top" secondItem="1aj-Ry-42I" secondAttribute="bottom" constant="20" id="bS4-CK-dL4"/>
+                            <constraint firstItem="1BK-C3-ucc" firstAttribute="top" secondItem="A2A-cl-DTk" secondAttribute="bottom" constant="45" id="bsy-iY-Cho"/>
+                            <constraint firstItem="dmy-0D-7fD" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="dxZ-5H-TwK"/>
+                            <constraint firstItem="tD6-HZ-vEb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="gBW-hJ-8ab"/>
+                            <constraint firstItem="1aj-Ry-42I" firstAttribute="top" secondItem="tD6-HZ-vEb" secondAttribute="bottom" constant="35" id="hBH-h3-IHC"/>
+                            <constraint firstAttribute="bottom" secondItem="dmy-0D-7fD" secondAttribute="bottom" constant="124" id="nhm-va-QWo"/>
+                            <constraint firstItem="u2H-GE-kJM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="uL9-C4-sWH"/>
+                            <constraint firstItem="Qas-9y-RKQ" firstAttribute="top" secondItem="u2H-GE-kJM" secondAttribute="bottom" constant="38" id="yG4-rY-P1j"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="btn25out" destination="A2A-cl-DTk" id="B1W-6N-Cnv"/>
+                        <outlet property="btn3out" destination="1BK-C3-ucc" id="vyR-my-0Oi"/>
+                        <outlet property="btnAbout" destination="1aj-Ry-42I" id="AoR-Cg-cWg"/>
+                        <outlet property="btnHisout" destination="dmy-0D-7fD" id="2Ah-oF-j72"/>
                         <outlet property="lbRemainingTime" destination="Qas-9y-RKQ" id="5hj-Vg-fX6"/>
+                        <outlet property="txtMin" destination="tD6-HZ-vEb" id="3a3-oo-MOr"/>
                         <outlet property="txtMission" destination="u2H-GE-kJM" id="KHc-5z-Ux2"/>
                     </connections>
                 </viewController>
@@ -87,17 +122,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cq5-oE-5IG">
-                                <rect key="frame" x="57" y="28" width="35" height="30"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="show" id="iJJ-ng-VtW"/>
-                                </connections>
-                            </button>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="VL5-cP-Vln">
-                                <rect key="frame" x="0.0" y="57" width="600" height="162"/>
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="VL5-cP-Vln">
+                                <rect key="frame" x="10" y="60" width="580" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="441302487.873797">
                                     <!--2014-12-26 16:01:27 +0000-->
                                 </date>
@@ -105,8 +131,17 @@
                                     <action selector="datePicker:" destination="FW8-86-Tba" eventType="valueChanged" id="KZS-5M-dBv"/>
                                 </connections>
                             </datePicker>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAH-Xb-4Um">
-                                <rect key="frame" x="108" y="309" width="240" height="128"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cq5-oE-5IG">
+                                <rect key="frame" x="10" y="20" width="35" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="show" id="iJJ-ng-VtW"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAH-Xb-4Um">
+                                <rect key="frame" x="10" y="230" width="580" height="362"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -114,14 +149,25 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cq5-oE-5IG" firstAttribute="leading" secondItem="UVo-HB-Nzk" secondAttribute="leading" constant="10" id="5xd-iV-Sgf"/>
+                            <constraint firstAttribute="trailing" secondItem="VL5-cP-Vln" secondAttribute="trailing" constant="10" id="GbN-Zk-nkj"/>
+                            <constraint firstAttribute="trailing" secondItem="YAH-Xb-4Um" secondAttribute="trailing" constant="10" id="Rcg-gH-0M4"/>
+                            <constraint firstItem="cq5-oE-5IG" firstAttribute="top" secondItem="UVo-HB-Nzk" secondAttribute="top" constant="20" id="SPi-Dj-iiN"/>
+                            <constraint firstAttribute="bottom" secondItem="YAH-Xb-4Um" secondAttribute="bottom" constant="8" id="dyc-y3-WIb"/>
+                            <constraint firstItem="YAH-Xb-4Um" firstAttribute="leading" secondItem="UVo-HB-Nzk" secondAttribute="leading" constant="10" id="hG9-KN-hek"/>
+                            <constraint firstItem="VL5-cP-Vln" firstAttribute="top" secondItem="UVo-HB-Nzk" secondAttribute="top" constant="60" id="jLh-El-mqs"/>
+                            <constraint firstItem="YAH-Xb-4Um" firstAttribute="top" secondItem="VL5-cP-Vln" secondAttribute="bottom" constant="8" id="lXl-am-jPM"/>
+                            <constraint firstItem="VL5-cP-Vln" firstAttribute="leading" secondItem="UVo-HB-Nzk" secondAttribute="leading" constant="10" id="mfM-Ft-IFL"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="HistoryText" destination="YAH-Xb-4Um" id="ijK-9r-IbL"/>
+                        <outlet property="HistoryText" destination="YAH-Xb-4Um" id="A51-Hc-gxR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FQn-eg-9Pd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="614" y="307"/>
+            <point key="canvasLocation" x="613" y="348"/>
         </scene>
     </scenes>
 </document>

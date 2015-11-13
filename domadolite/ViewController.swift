@@ -9,22 +9,44 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var txtMission: UITextField!
     
     @IBOutlet weak var lbRemainingTime: UILabel!
     
+    @IBOutlet weak var txtMin: UITextField!
+    
+    @IBOutlet weak var btn25out: UIButton!
+    
+    @IBOutlet weak var btn3out: UIButton!
+    
+    @IBOutlet weak var btnAbout: UIButton!
+    
+    @IBOutlet weak var btnHisout: UIButton!
+    
+    @IBAction func txtMissionAssign(sender: AnyObject) {
+        txtMission.text = ""
+    }
+    
+    
     @IBAction func btn25Min(sender: AnyObject) {
         remainingSeconds = 25*60
         durationSeconds = remainingSeconds
+        setCountdown()
         isCounting = true
     }
     
     @IBAction func btn3Sec(sender: AnyObject) {
-        remainingSeconds = 3
-        durationSeconds = remainingSeconds
-        isCounting = true
+        if txtMin.text == ""{
+            alert("Input Minutes First!")
+        }
+        else{
+            remainingSeconds =  (Int(txtMin.text!)!) * 60
+            durationSeconds = remainingSeconds
+            setCountdown()
+            isCounting = true
+        }
     }
     
     @IBAction func btnAbortMission(sender: AnyObject) {
@@ -38,7 +60,7 @@ class ViewController: UIViewController {
             let mins = newSeconds / 60
             let seconds = newSeconds % 60
             
-            lbRemainingTime!.text = NSString(format: "%02d:%02d", mins, seconds)
+            lbRemainingTime!.text = NSString(format: "%02d:%02d", mins, seconds) as String
             
             if newSeconds <= 0 {
                 isCounting = false
@@ -52,6 +74,7 @@ class ViewController: UIViewController {
     var isCounting: Bool = false {
         willSet(newValue) {
             if newValue {
+                
                 timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer:", userInfo: nil, repeats: true)
             } else {
                 timer?.invalidate()
@@ -64,6 +87,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        resetCd()
+        txtMission.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
         
     }
@@ -107,15 +132,44 @@ class ViewController: UIViewController {
 //        println(dateFormatter.stringFromDate(date))
 //        println(timeFormatter.stringFromDate(date))
         
-        var context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
-        var row:AnyObject = NSEntityDescription.insertNewObjectForEntityForName("Missionjournal", inManagedObjectContext: context!)
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        let row:AnyObject = NSEntityDescription.insertNewObjectForEntityForName("Missionjournal", inManagedObjectContext: context!)
         row.setValue("\(mission)", forKey:"mission")
         row.setValue(duration, forKey:"duration")
         row.setValue(dateFormatter.stringFromDate(startTime), forKey:"date")
         row.setValue(timeFormatter.stringFromDate(startTime), forKey:"time")
         row.setValue(complete, forKey:"complete")
-        context!.save(nil)
-        println("come on!")
+        do {
+            try context!.save()
+        } catch _ {
+        }
+        print("come on!")
+    }
+    
+    func setCountdown(){
+        txtMission.enabled = false
+        txtMission.alpha = 0.6
+        txtMin.enabled = false
+        txtMin.alpha = 0.6
+        btn25out.enabled = false
+        btn3out.enabled = false
+        btnAbout.enabled = true
+        btnHisout.enabled = false
+        
+        UIApplication.sharedApplication().idleTimerDisabled = true
+    }
+    
+    func resetCd(){
+        txtMission.enabled = true
+        txtMission.alpha = 1
+        txtMin.enabled = true
+        txtMin.alpha = 1
+        btn25out.enabled = true
+        btn3out.enabled = true
+        btnAbout.enabled = false
+        btnHisout.enabled = true
+        
+        UIApplication.sharedApplication().idleTimerDisabled = false
     }
     
     func alert(content:String){
@@ -124,6 +178,18 @@ class ViewController: UIViewController {
         msgAlert.message = ""
         msgAlert.addButtonWithTitle("OK")
         msgAlert.show()
+        resetCd()
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+        self.view.endEditing(true)
+    }
+
+    
 }
 
